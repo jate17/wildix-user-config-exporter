@@ -15,11 +15,11 @@ headers = {
     "Referer": "http://{ip}/?Menuid=10",
 }
 cookies = {"PHPSESSID": ""}# Your PHPSESSID DOG 
-
+serial_number = "" #Your s/n DOG
 uid = []
 
 while True:
-    response = requests.get(f"{url}&newclass=aclpbx&action=getUsers&startIndex={start_index}&results=20&sortKey=&sortDir=asc&search=&pbxSerial=221100004675", params=params, headers=headers, cookies=cookies)
+    response = requests.get(f"{url}&newclass=aclpbx&action=getUsers&startIndex={start_index}&results=20&sortKey=&sortDir=asc&search=&pbxSerial={serial_number}", params=params, headers=headers, cookies=cookies)
     data = response.json()
     [uid.append(x["uid"]) for x in data["BODY"] ]
     if len(data["BODY"]) == 20: 
